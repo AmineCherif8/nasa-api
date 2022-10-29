@@ -1,0 +1,32 @@
+{
+  "name": "nasa-api",
+  "version": "1.0.0",
+  "description": "create an API for ADW",
+  "main": "index.js",
+  "scripts": {
+    "start:dev": "nodemon",
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && node build/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmineCherif8/nasa-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmineCherif8/nasa-api/issues"
+  },
+  "homepage": "https://github.com/AmineCherif8/nasa-api#readme",
+  "devDependencies": {
+    "@types/node": "^18.11.7",
+    "nodemon": "^2.0.20",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.8.4"
+  },
+  "dependencies": {
+    "axios": "^1.1.3"
+  }
+}
