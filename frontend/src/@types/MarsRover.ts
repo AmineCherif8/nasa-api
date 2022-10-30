@@ -35,9 +35,31 @@ export interface RoverProps {
   earthDate: string;
   status: string;
   roverName: string;
+  landingDate: string;
+  launchDate: string;
+  roverId: number;
 }
 
 export type RoverParams = {
-  sol: string | undefined;
+  sol: number | undefined;
   name: string | undefined;
+  roverName: string | undefined;
+};
+
+export type AllRoverProps = {
+  rovers: IMarsRover[];
+};
+
+export type IRoverModal = {
+  title: string;
+  picture: string;
+  landingDate: string;
+  launchDate: string;
+  roverId: number;
+  roverName: string;
+};
+
+export type SearchRover = {
+  roversName: string[];
+  roversCameraName: string[];
 };

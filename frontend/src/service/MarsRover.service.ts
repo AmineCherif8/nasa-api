@@ -9,8 +9,17 @@ const client = axios.create({
 });
 
 export const getMarsRovers = (
-  sol: string | undefined,
-  name: string | undefined
+  sol: number | undefined,
+  name: string | undefined,
+  roverName: string | undefined
 ) => {
-  return client.get<IRovers>(`/sol/${Number(sol)}/camera/${name}/`);
+  return client.get<IRovers>(`rovers/${roverName}/sol/${sol}/camera/${name}/`);
+};
+
+export const getCameraRovers = () => {
+  return client.get<string[]>(`/roversCameraName/`);
+};
+
+export const getRoversName = () => {
+  return client.get<[]>(`/roversName/`);
 };
