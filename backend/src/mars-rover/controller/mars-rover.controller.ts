@@ -34,6 +34,7 @@ export class MarsRoverController {
   }
 
   @UseInterceptors(CacheInterceptor)
+  @CacheTTL(0)
   @Get("/roversName")
   @Header("Content-Type", "application/json")
   async getRoversName(): Promise<any> {
@@ -41,6 +42,7 @@ export class MarsRoverController {
   }
 
   @UseInterceptors(CacheInterceptor)
+  @CacheTTL(0)
   @Get("/roversCameraName")
   @Header("Content-Type", "application/json")
   getRoversCameraName(): string[] {
