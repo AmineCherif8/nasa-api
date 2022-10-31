@@ -4,6 +4,7 @@ import {
   Button,
   Divider,
   Grid,
+  Stack,
   TextField,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
@@ -51,48 +52,44 @@ const SearchBar = () => {
       <Box sx={{ p: "1em" }}>
         <Grid spacing={1.3} container justifyContent="flex">
           <Grid item>
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo"
-              options={roversName}
-              onChange={(e, value) => setCurrentRoverName(value)}
-              sx={{ width: 300 }}
-              renderInput={(params) => (
-                <TextField {...params} label="Rover Name" />
-              )}
-            />
-          </Grid>
-          <Grid item>
-            <Autocomplete
-              disablePortal
-              id="combo-box-demo-2"
-              onChange={(e, value) => setCurrentCameraName(value)}
-              options={roversCameraName}
-              sx={{ width: 300 }}
-              renderInput={(params) => (
-                <TextField {...params} label="Camera Rover Name" />
-              )}
-            />
-          </Grid>
-          <Grid item>
-            <TextField
-              onChange={(event) =>
-                setCurrentSolDistance(Number(event.target.value))
-              }
-              id="outlined-basic"
-              label="Sol"
-              type="number"
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item>
-            <Button
-              onClick={getAllRovers}
-              sx={{ padding: "1em" }}
-              variant="outlined"
-            >
-              Search
-            </Button>
+            <Stack direction="row" spacing={1.5}>
+              <Autocomplete
+                disablePortal
+                id="combo-box-demo"
+                options={roversName}
+                onChange={(e, value) => setCurrentRoverName(value)}
+                sx={{ width: 300 }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Rover Name" />
+                )}
+              />
+              <Autocomplete
+                disablePortal
+                id="combo-box-demo-2"
+                onChange={(e, value) => setCurrentCameraName(value)}
+                options={roversCameraName}
+                sx={{ width: 300 }}
+                renderInput={(params) => (
+                  <TextField {...params} label="Camera Rover Name" />
+                )}
+              />
+              <TextField
+                onChange={(event) =>
+                  setCurrentSolDistance(Number(event.target.value))
+                }
+                id="outlined-basic"
+                label="Sol"
+                type="number"
+                variant="outlined"
+              />
+              <Button
+                onClick={getAllRovers}
+                sx={{ padding: "0.8em" }}
+                variant="outlined"
+              >
+                Search
+              </Button>
+            </Stack>
           </Grid>
         </Grid>
         <Divider sx={{ marginTop: "1em", marginBottom: "1em" }} />
