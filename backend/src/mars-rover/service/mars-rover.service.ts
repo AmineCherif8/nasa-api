@@ -6,11 +6,7 @@ import { PhotosRover } from "../entity/mars-rover.entity";
 
 @Injectable()
 export class MarsRoverService implements MarsRoverServicePort {
-  constructor(
-    @Inject(CACHE_MANAGER)
-    private cacheManager,
-    private httpService: HttpService
-  ) {}
+  constructor(private httpService: HttpService) {}
 
   async getAllMarsRover(
     sol: number,
@@ -21,8 +17,6 @@ export class MarsRoverService implements MarsRoverServicePort {
     const { data } = await firstValueFrom(
       this.httpService.get<PhotosRover[]>(url)
     );
-
-    this.cacheManager.set("rover-mars", data);
 
     return data;
   }

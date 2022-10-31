@@ -12,12 +12,11 @@ import { APP_INTERCEPTOR } from "@nestjs/core";
 
 @Module({
   imports: [
-    BaseCacheModule.registerAsync({
+    BaseCacheModule.registerAsync<RedisClientOptions>({
       useFactory: () => {
         return {
           store: redisStore,
-          host: "localhost",
-          port: 6379,
+          url: "redis://localhost:6379",
           ttl: 60,
         };
       },
