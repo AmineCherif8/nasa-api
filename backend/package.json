@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/AmineCherif8/nasa-api#readme",
   "devDependencies": {
+    "@types/cache-manager-redis-store": "^2.0.1",
     "@types/node": "^18.11.7",
     "nodemon": "^2.0.20",
     "rimraf": "^3.0.2",
@@ -34,7 +35,11 @@
     "@nestjs/platform-express": "^9.1.6",
     "@nestjs/testing": "^9.1.6",
     "axios": "^1.1.3",
+    "cache-manager": "^5.1.1",
+    "cache-manager-ioredis": "^2.1.0",
+    "cache-manager-redis-store": "^3.0.1",
     "eslint": "^8.26.0",
+    "redis": "^4.3.1",
     "rxjs": "^7.5.7"
   }
 }

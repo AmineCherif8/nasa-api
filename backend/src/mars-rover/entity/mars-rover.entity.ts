@@ -22,6 +22,10 @@ export class MarsRover {
   rover: Rover;
 }
 
-export class Photos {
-  marsRover: MarsRover[];
+export interface Photos {
+  marsRover?: MarsRover[];
+}
+
+export interface PhotosRover {
+  photos: Photos[];
 }
