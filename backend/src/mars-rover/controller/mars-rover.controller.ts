@@ -1,17 +1,26 @@
-import { Controller, Get, Head, Header, Param } from "@nestjs/common";
-import { Photos } from "../entity/mars-rover.entity";
+import {
+  CacheInterceptor,
+  Controller,
+  Get,
+  Header,
+  Param,
+  UseInterceptors,
+} from "@nestjs/common";
+import { PhotosRover } from "../entity/mars-rover.entity";
 import { MarsRoverService } from "../service/mars-rover.service";
 
+@UseInterceptors(CacheInterceptor)
 @Controller("/api/v1")
 export class MarsRoverController {
   constructor(private readonly marsRoverService: MarsRoverService) {}
+
   @Get("rovers/:roverName/sol/:sol/camera/:name")
   @Header("Content-Type", "application/json")
   getMarsRover(
     @Param("sol") sol: number,
     @Param("name") name: string,
     @Param("roverName") roverName: string
-  ): Promise<Photos> {
+  ): Promise<PhotosRover[]> {
     return this.marsRoverService.getAllMarsRover(sol, name, roverName);
   }
 
