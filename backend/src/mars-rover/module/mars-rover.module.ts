@@ -1,4 +1,4 @@
-import { HttpModule } from "@nestjs/axios";
+import { HttpModule, HttpService } from "@nestjs/axios";
 import {
   CacheInterceptor,
   CacheModule as BaseCacheModule,
