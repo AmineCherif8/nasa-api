@@ -42,6 +42,8 @@ cd ./nasa-api/frontend
 npm install
 ```
 
+> You have to create your token on https://api.nasa.gov/
+
 Once the dependencies are installed, you can now configure your project by creating a new `.env` file in the backend folder containing your environment variables used for development in our case TOKEN and REDIS CONFIG
 
 ```
@@ -60,8 +62,6 @@ npm run dev
 ```
 
 You can now head to `http://localhost:3003/api` and see your API Swagger docs. The example rovers API is located at the `http://localhost:3003/api/v1/rovers/Curiosity/sol/3000/camera/mast` endpoint.
-
-> The sample JWT above does not have a expiry, remember to use valid JWT and enforce the required claims in production
 
 ## 2. Project structure
 
