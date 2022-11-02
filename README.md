@@ -2,7 +2,7 @@
 
 - Crafted for Docker environments (Dockerfile support and environment variables)
 - REST API with [NestJs]
-- Swagger documentation, [Joi](https://github.com/hapijs/joi)
+- Swagger documentation
 - Folder structure, code samples and best practices
 
 ## 1. Getting started
