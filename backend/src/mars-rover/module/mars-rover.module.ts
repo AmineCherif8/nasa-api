@@ -1,4 +1,4 @@
-import { HttpModule } from "@nestjs/axios";
+import { HttpModule, HttpService } from "@nestjs/axios";
 import {
   CacheInterceptor,
   CacheModule as BaseCacheModule,
@@ -9,14 +9,17 @@ import { MarsRoverService } from "../service/mars-rover.service";
 import * as redisStore from "cache-manager-ioredis";
 import type { RedisClientOptions } from "redis";
 import { APP_INTERCEPTOR } from "@nestjs/core";
+import { ConfigModule } from "@nestjs/config";
 
 @Module({
   imports: [
+    ConfigModule.forRoot(),
     BaseCacheModule.registerAsync<RedisClientOptions>({
       useFactory: () => {
         return {
           store: redisStore,
-          url: "redis://localhost:6379",
+          host: process.env.REDIS_HOST,
+          port: process.env.REDIS_PORT,
           ttl: 60,
         };
       },
