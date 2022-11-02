@@ -1,5 +1,6 @@
 import {
   Box,
+  Chip,
   Paper,
   Table,
   TableBody,
@@ -52,22 +53,26 @@ const Rover = ({ rovers }: AllRoverProps) => {
               </TableRow>
             </TableHead>
             <TableBody>
-              {rovers?.map((rover, index) => (
-                <RoverList
-                  key={index}
-                  id={rover.id}
-                  distance={rover.sol}
-                  cameraName={rover.camera.name}
-                  cameraFullName={rover.camera.full_name}
-                  picture={rover.img_src}
-                  earthDate={rover.earth_date}
-                  status={rover.rover.status}
-                  roverName={rover.rover.name}
-                  landingDate={rover.rover.landing_date}
-                  launchDate={rover.rover.launch_date}
-                  roverId={rover.rover.id}
-                ></RoverList>
-              ))}
+              {rovers?.length == 0 || undefined ? (
+                <Chip label={"No result"}></Chip>
+              ) : (
+                rovers?.map((rover, index) => (
+                  <RoverList
+                    key={index}
+                    id={rover.id}
+                    distance={rover.sol}
+                    cameraName={rover.camera.name}
+                    cameraFullName={rover.camera.full_name}
+                    picture={rover.img_src}
+                    earthDate={rover.earth_date}
+                    status={rover.rover.status}
+                    roverName={rover.rover.name}
+                    landingDate={rover.rover.landing_date}
+                    launchDate={rover.rover.launch_date}
+                    roverId={rover.rover.id}
+                  ></RoverList>
+                ))
+              )}
             </TableBody>
           </Table>
         </TableContainer>

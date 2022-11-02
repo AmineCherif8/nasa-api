@@ -10,14 +10,14 @@ const client = axios.create({
 
 export const getMarsRovers = (
   sol: number | undefined,
-  name: string | undefined,
-  roverName: string | undefined
+  name: string | undefined | null,
+  roverName: string | undefined | null
 ) => {
   return client.get<IRovers>(`rovers/${roverName}/sol/${sol}/camera/${name}/`);
 };
 
 export const getCameraRovers = () => {
-  return client.get<string[]>(`/roversCameraName/`);
+  return client.get<[]>(`/roversCameraName/`);
 };
 
 export const getRoversName = () => {

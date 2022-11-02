@@ -1,14 +1,14 @@
-import { Injectable } from "@nestjs/common";
+import { CACHE_MANAGER, Inject, Injectable } from "@nestjs/common";
 import { MarsRoverServicePort } from "./mars-rover.service.port";
 import { firstValueFrom } from "rxjs";
 import { HttpService } from "@nestjs/axios";
-import { Photos } from "../entity/mars-rover.entity";
+import { PhotosRover } from "../entity/mars-rover.entity";
 import { ConfigService } from "@nestjs/config";
 
 @Injectable()
 export class MarsRoverService implements MarsRoverServicePort {
   constructor(
-    private configService: ConfigService,
+    private readonly config: ConfigService,
     private httpService: HttpService
   ) {}
 
@@ -16,10 +16,13 @@ export class MarsRoverService implements MarsRoverServicePort {
     sol: number,
     name: string,
     roverName: string
-  ): Promise<Photos> {
-    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${roverName}/photos?sol=${sol}&camera=${name}&api_key=KnjldQZW9SEUJLzaC2Inqbame82E0A8yRXIE3APn`;
-    const { data } = await firstValueFrom(this.httpService.get<Photos>(url));
-
+  ): Promise<PhotosRover[]> {
+    const url = this.formURL(
+      `api/v1/rovers/${roverName}/photos?sol=${sol}&camera=${name}&api_key=`
+    );
+    const { data } = await firstValueFrom(
+      this.httpService.get<PhotosRover[]>(url)
+    );
     return data;
   }
 
@@ -35,11 +38,18 @@ export class MarsRoverService implements MarsRoverServicePort {
       "PANCAM",
       "MINITES",
     ];
+
     return roversCameraName;
   }
 
   getAllRoversName(): string[] {
     const roversName = ["Curiosity", "Opportunity", "Spirit"];
     return roversName;
+  }
+
+  private formURL(uri: string) {
+    return `${this.config.get("API_URL")}${uri}${this.config.get(
+      "TOKEN_NASA"
+    )}`;
   }
 }

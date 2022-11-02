@@ -1,1 +1,12 @@
-TOKEN_NASA=put your token here :D
+#Config Server
+PORT= choose your port (ex : 3000 / 3003 )
+
+#REDIS CONFIG
+REDIS_HOST=localhost
+REDIS_PORT=6379
+
+#TOKEN NASA API
+TOKEN_NASA= put your token here
+
+#API URL
+API_URL= https://api.nasa.gov/mars-photos/

@@ -1,11 +1,11 @@
-import { Photos } from "../entity/mars-rover.entity";
+import { Photos, PhotosRover } from "../entity/mars-rover.entity";
 
 export interface MarsRoverServicePort {
   getAllMarsRover(
     sol: number,
     name: string,
     roverName: string
-  ): Promise<Photos>;
+  ): Promise<PhotosRover[]>;
 
   getAllRoversCameraName(): string[];
 
