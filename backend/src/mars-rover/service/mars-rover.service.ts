@@ -3,21 +3,26 @@ import { MarsRoverServicePort } from "./mars-rover.service.port";
 import { firstValueFrom } from "rxjs";
 import { HttpService } from "@nestjs/axios";
 import { PhotosRover } from "../entity/mars-rover.entity";
+import { ConfigService } from "@nestjs/config";
 
 @Injectable()
 export class MarsRoverService implements MarsRoverServicePort {
-  constructor(private httpService: HttpService) {}
+  constructor(
+    private readonly config: ConfigService,
+    private httpService: HttpService
+  ) {}
 
   async getAllMarsRover(
     sol: number,
     name: string,
     roverName: string
   ): Promise<PhotosRover[]> {
-    const url = `https://api.nasa.gov/mars-photos/api/v1/rovers/${roverName}/photos?sol=${sol}&camera=${name}&api_key=KnjldQZW9SEUJLzaC2Inqbame82E0A8yRXIE3APn`;
+    const url = this.formURL(
+      `api/v1/rovers/${roverName}/photos?sol=${sol}&camera=${name}&api_key=`
+    );
     const { data } = await firstValueFrom(
       this.httpService.get<PhotosRover[]>(url)
     );
-
     return data;
   }
 
@@ -40,5 +45,11 @@ export class MarsRoverService implements MarsRoverServicePort {
   getAllRoversName(): string[] {
     const roversName = ["Curiosity", "Opportunity", "Spirit"];
     return roversName;
+  }
+
+  private formURL(uri: string) {
+    return `${this.config.get("API_URL")}${uri}${this.config.get(
+      "TOKEN_NASA"
+    )}`;
   }
 }
