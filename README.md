@@ -58,6 +58,7 @@ You are now ready to launch the NestJS application using the command below.
 # Launch the development server with TSNode
 npm run dev
 ```
+(Don't forget to change the port you choose on the url)
 
 You can now head to `http://localhost:3003/api` and see your API Swagger docs. The example rovers API is located at the `http://localhost:3003/api/v1/rovers/Curiosity/sol/3000/camera/mast` endpoint.
 
