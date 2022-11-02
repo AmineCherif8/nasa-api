@@ -1,9 +1,9 @@
 # Nasa API for ADW Project
 
-- Crafted for Docker environments (Dockerfile support and environment variables)
+- Docker used for redis server & web view of the cache
 - REST API with [NestJs]
-- Swagger documentation, [Joi](https://github.com/hapijs/joi)
-- Folder structure, code samples and best practices
+- Swagger documentation
+- Folder structure and best practices
 
 ## 1. Getting started
 
@@ -12,9 +12,7 @@
 Before starting, make sure you have at least those components on your workstation:
 
 - An up-to-date release of [NodeJS](https://nodejs.org/) and NPM
-
-[Docker](https://www.docker.com/) may also be useful for advanced testing and image building, although it is not required for development.
-
+- [Docker](https://www.docker.com/) 
 ### 1.2 Project configuration
 
 Start by cloning this project on your workstation.
@@ -29,9 +27,9 @@ First you have to start the docker file , it start the redis cache
 cd ./nasa-api/
 docker compose up -d
 
-The next thing will be to install all the dependencies of the project.
-```
 
+```
+The next thing will be to install all the dependencies of the project.
 ```sh
 cd ./nasa-api/backend
 npm install
