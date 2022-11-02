@@ -1,7 +1,5 @@
 # Nasa API for ADW Project
 
-[![License](https://img.shields.io/github/license/saluki/nestjs-template.svg)](https://github.com/saluki/nestjs-template/blob/master/LICENSE)
-
 - Crafted for Docker environments (Dockerfile support and environment variables)
 - REST API with [NestJs]
 - Swagger documentation, [Joi](https://github.com/hapijs/joi)
