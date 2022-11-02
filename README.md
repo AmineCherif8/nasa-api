@@ -56,7 +56,7 @@ You are now ready to launch the NestJS application using the command below.
 ```sh
 
 # Launch the development server with TSNode
-npm run dev
+npm run start dev
 ```
 (Don't forget to change the port you choose on the url)
 
