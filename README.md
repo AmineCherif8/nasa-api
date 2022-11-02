@@ -93,7 +93,7 @@ The NPM commands below are already included with this template and can be used t
 npm run start
 
 # Run the application using nodemon
-npm run dev
+npm run start dev
 
 # Transpile the TypeScript files
 npm run build
